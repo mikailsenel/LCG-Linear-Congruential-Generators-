@@ -14,6 +14,7 @@ namespace LCG__Linear_Congruential_Generators_
             this.m = amplitude;
             this.z0 = initialValue;
         }
+
         public double[] LCG_Generators()
         {
             /*
