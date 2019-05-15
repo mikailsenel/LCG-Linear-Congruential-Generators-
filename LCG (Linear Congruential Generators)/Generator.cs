@@ -28,7 +28,6 @@ namespace LCG__Linear_Congruential_Generators_
             {
                 u[i] = zk / m;
                 zk = (a * zk + c) % m;
-               
             }
             return u;
         }
