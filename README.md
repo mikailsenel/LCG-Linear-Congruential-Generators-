@@ -42,6 +42,7 @@ public Generator(int multiplier, int increment, int amplitude, int initialValue)
             return success;
         }
 ```
+#### CALL
 ```csharp
 	bool status = generator.Control();
         Console.WriteLine(status
