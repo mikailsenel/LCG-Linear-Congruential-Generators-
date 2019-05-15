@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace LCG__Linear_Congruential_Generators_
 {
     public class Generator
     {
-        private int a,c,m,z0;
+        private int a, c, m, z0;
         public Generator(int multiplier, int increment, int amplitude, int initialValue)
         {
             this.a = multiplier;
@@ -31,6 +32,25 @@ namespace LCG__Linear_Congruential_Generators_
                 zk = (a * zk + c) % m;
             }
             return u;
+        }
+
+        public bool Control()
+        {
+            bool success = true;
+
+            if (m % 2 != 0)
+                success = false;
+            if (c == 0)
+                success = false;
+            if ((a - 1) % 4 != 0)
+                success = false;
+            int smallNumber = m < c ? m : c;
+            for (int i = 2; i < smallNumber; i++)
+            {
+                if (c % i == 0 && m % i == 0)
+                    success = false;
+            }
+            return success;
         }
     }
 }
