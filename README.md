@@ -20,3 +20,32 @@ public Generator(int multiplier, int increment, int amplitude, int initialValue)
 	Generator generator = new Generator(5,3,16,7);
 	double[] randomArray = generator.LCG_Generators();
 ```
+## Full Periyot Control
+[![](https://i.ibb.co/JpXtmYy/Ads-z2.png)](https://i.ibb.co/JpXtmYy/Ads-z2.png)
+```csharp
+	public bool Control()
+        {
+            bool success = true;
+
+            if (m % 2 != 0)
+                success = false;
+            if (c == 0)
+                success = false;
+            if ((a - 1) % 4 != 0)
+                success = false;
+            int smallNumber = m < c ? m : c;
+            for (int i = 2; i < smallNumber; i++)
+            {
+                if (c % i == 0 && m % i == 0)
+                    success = false;
+            }
+            return success;
+        }
+```
+#### CALL
+```csharp
+	bool status = generator.Control();
+        Console.WriteLine(status
+                ? "\nFull Periyot"
+                : "\nNot Full Periyot");
+```
