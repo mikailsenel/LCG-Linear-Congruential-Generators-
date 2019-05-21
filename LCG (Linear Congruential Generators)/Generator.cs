@@ -36,20 +36,28 @@ namespace LCG__Linear_Congruential_Generators_
 
         public bool Control()
         {
-            bool success = true;
+            bool success = false;
+            int i = 0;
+            while (!success && i <= m)
+            {
+                if (Math.Pow(2,i) == m)
+                    success = true;
+                i++;
+            }
 
-            if (m % 2 != 0)
-                success = false;
             if (c == 0)
                 success = false;
-            if ((a - 1) % 4 != 0)
-                success = false;
-            int smallNumber = m < c ? m : c;
-            for (int i = 2; i < smallNumber; i++)
+
+            int smallNumber = a < m ? a : m;
+            for (i = 2; i <=smallNumber; i++)
             {
-                if (c % i == 0 && m % i == 0)
+                if (a % i == 0 && m % i == 0)
                     success = false;
             }
+
+            if ((a - 1) % 4 != 0)
+                success = false;
+
             return success;
         }
     }
